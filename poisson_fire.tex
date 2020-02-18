@@ -36,7 +36,14 @@
 \section{Experimental setup}
 
 \section{Heat flux measurements}
+This section describes machine learning methods for inferring the heat release rate of a compartment fire using heat flux measurements from the directional flame thermometers (DFTs) of the aforementioned experimental setup. A simple starting point is to plot the heat release rates from the training fires against the heat fluxes measured by the DFTs. Although 34 for these scatter plots could be generated (one for each DFT in the setup), Figure 
 
+
+\begin{figure}[htbp] \centering
+\includegraphics[width=.75\textwidth]{./figures/spatial_histogram.pdf}
+\caption{A visual depiction of the naive count forecasting methodology for an example department. Each black dot marker indicates the location of a residential fire that occurred during the six-year training interval, 2006-2011 (inclusive). The color of a tract corresponds to the fire count density rate estimated from this approach for that tract. Notice that large census tracts with few fires have the lowest density rate and small tracts with many fires have the highest density rate.}
+\label{fig:spatial_histogram}
+\end{figure}
 
 
 
