@@ -82,24 +82,27 @@ For and experiment with $n$ observations and $m$ DFTs, $\boldsymbol{\dot{Q}} \in
 
 In addition to the theoretical explanation from Modak's point source model, the scatterplots shown in Figure \ref{fig:dft_scatterplot} show the linear relationship between $\boldsymbol{\dot{Q}}$ and $\boldsymbol{q}"$ from the training set experiments. 
 
-
-
-
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[t]{.45\textwidth}
       \centering
-      \includegraphics[width=\textwidth,keepaspectratio]{figures/training_ramps.pdf}
+      \includegraphics[width=\textwidth,keepaspectratio]{figures/weak_dft_scatter.pdf}
       \caption{Training HRR ramps}
-      \label{fig:training_ramps}
+      \label{fig:weak_scatter}
   \end{subfigure}
   \begin{subfigure}[t]{.45\textwidth}
       \centering
-      \includegraphics[width=\textwidth ,keepaspectratio]{figures/test_ramp.pdf}
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/moderate_dft_scatter.pdf}
       \caption{Test HRR ramp}
-      \label{fig:test_ramp}
+      \label{fig:moderate_scatter}
   \end{subfigure}
-  \caption{\protect\ref{fig:training_ramps} shows the three HRR ramps used in the experiments that comprise the training set for the machine learning models. \protect\ref{fig:test_ramp} shows the HRR ramp used in the experiment that is used to evaluate the models.}
+   \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/strong_dft_scatter.pdf}
+      \caption{Test HRR ramp}
+      \label{fig:strong_scatter}
+  \end{subfigure}
+  \caption{Scatterplots of } }
   \label{fig:hrr_ramps}
 \end{figure}
 
