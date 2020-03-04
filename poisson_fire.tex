@@ -87,25 +87,42 @@ In addition to the theoretical explanation from Modak's point source model, the 
   \begin{subfigure}[t]{.45\textwidth}
       \centering
       \includegraphics[width=\textwidth,keepaspectratio]{figures/weak_dft_scatter.pdf}
-      \caption{Training HRR ramps}
+      \caption{Weak correlation}
       \label{fig:weak_scatter}
   \end{subfigure}
   \begin{subfigure}[t]{.45\textwidth}
       \centering
       \includegraphics[width=\textwidth ,keepaspectratio]{figures/moderate_dft_scatter.pdf}
-      \caption{Test HRR ramp}
+      \caption{Moderate correlation}
       \label{fig:moderate_scatter}
   \end{subfigure}
    \begin{subfigure}[t]{.45\textwidth}
       \centering
       \includegraphics[width=\textwidth ,keepaspectratio]{figures/strong_dft_scatter.pdf}
-      \caption{Test HRR ramp}
+      \caption{Strong correlation}
       \label{fig:strong_scatter}
   \end{subfigure}
-  \caption{Scatterplots of } }
-  \label{fig:hrr_ramps}
+  \caption{Scatterplots of the radiative heat release rate vs. measured heat flux for three different DFTs. These examples demonstrate the variation in the strength of correlations across DFTs.} 
+  \label{fig:dft_scatterplot}
 \end{figure}
 
+The examples shown in Figure \ref{fig:dft_scatterplot} demonstrate how the strength of the correlation between the radiative HRR and measured heat flux varies significantly across the different DFTs. This finding raises several questions regarding the design of the model. First, should all the DFTs be included in the model? If not, which ones should be excluded and why? It may seem that the best set of sensors to include in the model is the one that includes only the DFTs whose measured heat flux is the most correlated with the radiative heat release rate. However, this is not necessarily true because multiple DFTs with strong correlations can provide redundant information. 
+
+To circumvent these issues, a lasso regression is employed. This technique is a modified linear regression that performs feature selection in addition to estimating values of $\beta$. These values are estimated according to equation \ref{eqn:lasso}:
+
+ \begin{equation}
+  \label{eqn:lasso}
+  \hat\beta_{lasso} = \argmin_{\beta}\Bigg\{ \underbrace{\big[\chi_R \boldsymbol{\dot{Q}} - \boldsymbol{q}" \beta\big]^T\big[\chi_R \boldsymbol{\dot{Q}} - \boldsymbol{q}" \beta\big]}_{\text{I}} + \underbrace{\lambda||\beta||_1}_{II}   \Bigg\}
+\end{equation}
+
+\noindent where $||\beta||_1$ is the $l^1$ norm of $\beta$ and $\lambda$ is a hyperparameter that is learned from the data. Note that term I is simply the sum of the squared residuals, meaning that if term II is zero, the process is identical to a ordinary least squares linear regression. The inclusion of term II, also known as L1 regularization, serves two purposes. First, it helps prevent overfitting as term II can be viewed as a penalty for increased model complexity. Second, it performs feature selection as L1 regularization has a tendency to set values in $\beta$ to zero, thereby removing the corresponding feature from the model. It should be noted that the use of the $l^2$ norm (known as ridge regression) is another common technique to combat overfitting; however, unlike lasso regression, ridge regression does not also perform feature selection. 
+
+
+\begin{figure}[htb] \centering
+\includegraphics[width=.75\textwidth]{./figures/spatial_histogram.pdf}
+\caption{A visual depiction of the naive count forecasting methodology for an example department. Each black dot marker indicates the location of a residential fire that occurred during the six-year training interval, 2006-2011 (inclusive). The color of a tract corresponds to the fire count density rate estimated from this approach for that tract. Notice that large census tracts with few fires have the lowest density rate and small tracts with many fires have the highest density rate.}
+\label{fig:spatial_histogram}
+\end{figure}
 
 
 
