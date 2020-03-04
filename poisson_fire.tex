@@ -117,12 +117,219 @@ To circumvent these issues, a lasso regression is employed. This technique is a 
 
 \noindent where $||\beta||_1$ is the $l^1$ norm of $\beta$ and $\lambda$ is a hyperparameter that is learned from the data. Note that term I is simply the sum of the squared residuals, meaning that if term II is zero, the process is identical to a ordinary least squares linear regression. The inclusion of term II, also known as L1 regularization, serves two purposes. First, it helps prevent overfitting as term II can be viewed as a penalty for increased model complexity. Second, it performs feature selection as L1 regularization has a tendency to set values in $\beta$ to zero, thereby removing the corresponding feature from the model. It should be noted that the use of the $l^2$ norm (known as ridge regression) is another common technique to combat overfitting; however, unlike lasso regression, ridge regression does not also perform feature selection. 
 
+\begin{figure}[htb] \centering
+\includegraphics[width=.75\textwidth]{./figures/lasso_graphic.pdf}
+\caption{}
+\label{fig:lasso_graphic}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,keepaspectratio]{figures/linreg_rad.pdf}
+      \caption{Linear regression (33 sensors)}
+      \label{fig:linreg_rad}
+  \end{subfigure}
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/lasso_rad.pdf}
+      \caption{Lasso regression (13 sensors)}
+      \label{fig:lasso_rad}
+  \end{subfigure}
+  \caption{} 
+  \label{fig:dft_regressions}
+\end{figure}
+
 
 \begin{figure}[htb] \centering
-\includegraphics[width=.75\textwidth]{./figures/spatial_histogram.pdf}
-\caption{A visual depiction of the naive count forecasting methodology for an example department. Each black dot marker indicates the location of a residential fire that occurred during the six-year training interval, 2006-2011 (inclusive). The color of a tract corresponds to the fire count density rate estimated from this approach for that tract. Notice that large census tracts with few fires have the lowest density rate and small tracts with many fires have the highest density rate.}
-\label{fig:spatial_histogram}
+\includegraphics[width=.75\textwidth]{./figures/lasso_dfts.pdf}
+\caption{}
+\label{fig:lasso_dfts}
 \end{figure}
+
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,keepaspectratio]{figures/gp_prior.pdf}
+      \caption{}
+      \label{fig:gp_prior}
+  \end{subfigure}
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/gp_posterior.pdf}
+      \caption{}
+      \label{fig:gp_posterior}
+  \end{subfigure}
+  \caption{} 
+  \label{fig:gp_regression_example}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,keepaspectratio]{figures/dft_result_100s_triangle.pdf}
+      \caption{}
+      \label{fig:dft_result_100s_triangle}
+  \end{subfigure}
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/dft_result_300s_triangle.pdf}
+      \caption{}
+      \label{fig:dft_result_300s_triangle}
+  \end{subfigure}
+   \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/dft_result_t_squared.pdf}
+      \caption{}
+      \label{fig:dft_result_t_squared}
+  \end{subfigure}
+    \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/dft_result_weird_curve.pdf}
+      \caption{}
+      \label{fig:dft_result_weird_curve}
+  \end{subfigure}
+  \caption{} 
+  \label{fig:dft_gp_results}
+\end{figure}
+
+
+\subsection{Video analysis}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{.35\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,keepaspectratio]{figures/fire_image.pdf}
+      \caption{}
+      \label{fig:fire_image}
+  \end{subfigure}
+  \begin{subfigure}[t]{.4\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/brightness_heatmap.pdf}
+      \caption{}
+      \label{fig:brightness_heatmap}
+  \end{subfigure}
+   \begin{subfigure}[t]{.35\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/binary_fire_image.pdf}
+      \caption{}
+      \label{fig:binary_fire_image}
+  \end{subfigure}
+  \caption{} 
+  \label{fig:fire_image_processing}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,keepaspectratio]{figures/frac_bright_scatterplot.pdf}
+      \caption{}
+      \label{fig:frac_bright}
+  \end{subfigure}
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/frac_bright43_scatterplot.pdf}
+      \caption{}
+      \label{fig:frac_bright_43}
+  \end{subfigure}
+  \caption{} 
+  \label{fig:frac_bright_scatterplots}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,keepaspectratio]{figures/image_result100s_triangle.pdf}
+      \caption{}
+      \label{fig:image_result_100s_triangle}
+  \end{subfigure}
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/image_result300s_triangle.pdf}
+      \caption{}
+      \label{fig:image_result_300s_triangle}
+  \end{subfigure}
+   \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/image_resultt_squared.pdf}
+      \caption{}
+      \label{fig:image_result_t_squared}
+  \end{subfigure}
+    \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/image_resultweird_curve.pdf}
+      \caption{}
+      \label{fig:image_result_weird_curve}
+  \end{subfigure}
+  \caption{} 
+  \label{fig:image_results}
+\end{figure}
+
+\subsection{Thermocouple measurements}
+
+
+\begin{figure}[htb] \centering
+\includegraphics[width=.75\textwidth]{./figures/constant_Qtot_assumption.pdf}
+\caption{}
+\label{fig:constant_Qtot_assumption}
+\end{figure}
+
+\begin{figure}[htb] \centering
+\includegraphics[width=.75\textwidth]{./figures/temp_scatter.pdf}
+\caption{}
+\label{fig:temp_scatter}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,keepaspectratio]{figures/053mesh_sensitivity.pdf}
+      \caption{}
+      \label{fig:0.53mesh_sensitivity}
+  \end{subfigure}
+  \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/107mesh_sensitivity.pdf}
+      \caption{}
+      \label{fig:1.07mesh_sensitivity}
+  \end{subfigure}
+   \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/16mesh_sensitivity.pdf}
+      \caption{}
+      \label{fig:1.6mesh_sensitivity}
+  \end{subfigure}
+    \begin{subfigure}[t]{.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth ,keepaspectratio]{figures/211mesh_sensitivity.pdf}
+      \caption{}
+      \label{fig:2.11mesh_sensitivity}
+  \end{subfigure}
+  \caption{} 
+  \label{fig:grid_sensitivity}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
 
 
 
